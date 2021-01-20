@@ -20,6 +20,7 @@
             $get_url = ucfirst(str_replace('Controller', '', get_class($this)));
 
             require(ROOT . "Views/" . ucfirst(str_replace('Mvc\s\\', '', $get_url )). '/' . $filename . '.php');
+            
 
             $content_for_layout = ob_get_clean();
 

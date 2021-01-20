@@ -24,12 +24,13 @@
 			$properties = $model->getProperties();
 
 			$checkId = $model->getId();
+			$properties['created_at'] = date('Y-m-d H:i:s');
+			$properties['updated_at'] = date('Y-m-d H:i:s');
 
 			if($checkId == null )
 			{
 				unset($properties['id']);
-				$properties['created_at'] = date('Y-m-d H:i:s');
-				$properties['updated_at'] = date('Y-m-d H:i:s');
+
 				$values = implode(', ',array_keys($properties));
 				$column = implode(', :',array_keys($properties));
 				$sql = "INSERT INTO {$this->table} (".$values.") VALUES ( :".$column.")";	
@@ -41,8 +42,6 @@
 
 			if($checkId != null)
 			{
-				$properties['created_at'] = date('Y-m-d H:i:s');
-				$properties['updated_at'] = date('Y-m-d H:i:s');
 
 				/*Khoi tao mang column*/
 				$columns = [];
